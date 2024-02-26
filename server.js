@@ -11,12 +11,12 @@ app.use(express.json());
 app.use(cors());
 
 
-// PRODUCTION SCRIPT
 // production script
 app.use(express.static("./client/build"));
 app.get("*", (req, res) => {
-res.sendFile(path.resolve(_dirname, "client", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
+
 
 mongoose
     .connect(process.env.MONGO_URI)
