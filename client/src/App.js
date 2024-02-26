@@ -25,9 +25,8 @@ function App() {
     <div className="App">
       <h1>READ</h1>
 
-      
-      {users &&
-  users.length > 0 &&
+
+     {Array.isArray(users) && users.length > 0 && 
   users.map((user, index) => {
     return (
       <div key={index}>
