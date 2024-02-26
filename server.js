@@ -32,10 +32,14 @@ mongoose
     //db model
     const User = new mongoose.model("User", userSchema);
 
-    app.get("/get-users", (req, res) => {
-    User.find()
-        .then((users) => res.json(users))
-        .catch((err) => console.log(err));
+    app.get("/get-users", async (req, res) => {
+            try {
+            const users = await User.find();
+            res.json(users);
+            } catch (err) {
+            console.log(err);
+            res.status(500).json({ error: "Internal Server Error" });
+            }
     });
 
     app.post("/create", (req, res) => {
