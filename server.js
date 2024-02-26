@@ -9,6 +9,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(cors({
+    origin: [
+      'https://mern.azurewebsites.net',
+    ],  // THE HTTP(ORIGIN) THAT WILL ALLOW TO ACCESS THE ROUTES
+    credentials: true,
+}));
 
 
 // production script
